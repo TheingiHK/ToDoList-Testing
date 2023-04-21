@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class Login {
 	
-	static String Username="TheingiHK";
+	static String Username="Testing-TG";
 	static String Password="Amk@560546";
 
 	public static void main(String[] args) throws InterruptedException {
@@ -23,12 +23,12 @@ public class Login {
 		String URL="https://todo-list-login.firebaseapp.com/#!/";
 		driver.get(URL);
 		
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 	
 		//1. Login using your github account.
 		driver.findElement(By.xpath("//a//span [@class='fa fa-github']")).click();
 		
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		
 		String currentwindow = driver.getWindowHandle();
 		
@@ -36,8 +36,6 @@ public class Login {
 	      Iterator<String> i = allWindows.iterator();
 	      while(i.hasNext()){
 	         String childwindow = i.next();
-	         System.out.println("Child window is => "+childwindow);
-				
 				
 				  if(!childwindow.equalsIgnoreCase(currentwindow)) {
 				  driver.switchTo().window(childwindow);		  		  
@@ -55,35 +53,38 @@ public class Login {
 			  driver.findElement(By.id("password")).sendKeys(Password);
 			  driver.findElement(By.xpath("//input[@type='submit']")).click();
 			  			  		  
-			  Thread.sleep(3000);	 
+			  Thread.sleep(2000);	 
 			  
 			  driver.switchTo().window(currentwindow);			  
 			  
 			 //2. create 10 to do list with random strings
 			  for(int c=0;c<=9;c++) {
-				  Thread.sleep(2000);
-				  String randomName=generateRandom();
-				  System.out.println("Random Name is "+randomName);
-				  Thread.sleep(3000);
+				  Thread.sleep(1000);
+				  String randomName=generateRandom();				  
+				  Thread.sleep(1000);
 				  driver.findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(randomName);
 				  driver.findElement(By.xpath("(//button)[2]")).click();
-			  }		  
+			  }		
+			  
+			  Thread.sleep(1000);
 			  
 			  //3. upon completion log out.
 			  driver.findElement(By.xpath("(//button)[1]")).click();
 			  
-			  Thread.sleep(2000);
+			  Thread.sleep(1000);
 			
 			  //4. Login again with the same account.
 			  driver.findElement(By.xpath("//a//span [@class='fa fa-github']")).click();	  
 			 		      
-		      Thread.sleep(2000);	 
+		      Thread.sleep(3000);	 
+		      driver.switchTo().window(currentwindow);	
 		      
 		      //5. Delete your list from 5 - 10.		      
-		      for(int t=0;t<=5;t++) {		    	  
-		    	  Thread.sleep(1000);	 
+		      for(int t=0;t<=5;t++) {	
 		    	  driver.findElement(By.xpath("(//button)[6]")).click();
-		      }	      
+		    	  Thread.sleep(1000);
+		      }	      	      
+		      
 		      
 		    //6. Logout upon completion
 			driver.findElement(By.xpath("(//button)[1]")).click();
