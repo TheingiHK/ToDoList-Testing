@@ -1,6 +1,6 @@
 # ToDoList-Testing
 
-The project is implemented using the Java programming language. 
+This project is implemented using the Java programming language. 
 
 To execute the project, you can follow these steps:
 
